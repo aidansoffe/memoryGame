@@ -60,4 +60,8 @@ function resetBoard() {
   })
 }) ();
 
+functin reStart() {
+
+};
+
 cards.forEach(card => card.addEventListener('click', flipCard));
