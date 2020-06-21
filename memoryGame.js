@@ -2,6 +2,10 @@ const cards = document.querySelectorAll('.memory-card');
 let flippedCard = false;
 let firtsCard, secondCard;
 let lockBoard = false;
+let lowScore = localStorage.getItem("low-score");
+if(lowScore) {
+  document.getElementById('bestScore').innerText = lowScore;
+}
 
 function flipCard() {
   if(lockBoard) return;
