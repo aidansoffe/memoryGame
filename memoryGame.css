@@ -6,21 +6,66 @@
 
 body {
   height: 100vh;
-  display: flex;
+  display: block;
   background: linear-gradient(#330000, #ff9933);
 }
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #30a7d7;
+}
+
+/*scores class*/
 h3 {
   font-size: 1.5rem;
+  color: #ffffff;
 }
+
+.header {
+  background-color: #ff9933;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
 .menu {
   width: 960px;
   display: flex;
   justify-content: space-evenly;
 }
 
+.game-header {
+  display: flex;
+  justify-content: center;
+}
+.game-name {
+  width: 845px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+#reset {
+  background-color: orange;
+  color: white;
+  font-size: 0.95rem;
+  border-radius: 15px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+#reset:hover {
+  background-color: #b52a0a;
+}
+
 .memory-game {
-  width: 640px;
-  height: 640px;
+  width: 450px;
+  height: 450px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -54,28 +99,9 @@ h3 {
   padding: 1px;
   position: absolute;
   border-radius: 5px;
-  background: #330000 ;
   backface-visibility: hidden;
 }
 
 .front-face {
   transform: rotateY(180deg);
 };
-
-.button {
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  background-color: #4CAF50;
-  position: relative;
-  bottom: 0;
-  right: 150px;
-
-};
-

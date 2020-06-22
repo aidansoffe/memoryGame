@@ -5,14 +5,21 @@
   <link rel="stylesheet" href="memoryGame.css">
 </head>
 <body>
-  <button class="button" onclick="reStart()">Reset</button>
-  <div class = 'menu'>
-    <h3>Your score: <span id="currentScore">0</span></h3>
-     <h3>Best Score: <span id="bestScore"></span></h3>
+  <section class="header">
+    <div class="menu">
+        <h3>Your score: <span id="currentScore">0</span></h3>
+        <h3>Best Score: <span id="bestScore"></span></h3>
+    </div>
+</section>
+<div class="game-header">
+  <div class="game-name">
+    <h1>Memory Game</h1>  
+    <button id="reset">Reset</button>
   </div>
+</div>
+  
+  
   <div class="memory-game">
-
-   
   <div class="memory-card" data-framework= "1">
     <img class="front-face" src="images/1.png" alt="1" />
     <img class="back-face" src="images/logo.jpeg" alt="logo" />

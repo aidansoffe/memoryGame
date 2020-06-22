@@ -1,11 +1,20 @@
 const cards = document.querySelectorAll('.memory-card');
+const currentScore = document.querySelector("#currentScore");
+const bestScore = document.querySelector("#bestScore");
 let flippedCard = false;
 let firtsCard, secondCard;
 let lockBoard = false;
-let lowScore = localStorage.getItem("low-score");
-if(lowScore) {
-  document.getElementById('bestScore').innerText = lowScore;
+let resetButton = document.querySelector('#reset')
+let cardCounter = 0;
+let gameOver = 0;
+let lowScore = localStorage.getItem("low-score"); // Track best score in local storage
+
+if (lowScore) {
+    document.getElementById("bestScore").innerText = lowScore;
 }
+resetButton.addEventListener('click', function() {
+  location.reload();
+});
 
 function flipCard() {
   if(lockBoard) return;
@@ -16,10 +25,14 @@ function flipCard() {
   if (!flippedCard) {
     flippedCard = true;
     firtsCard = this;
+    cardCounter++;
+    currentScore.textContent = cardCounter
     return;
   }
     flippedCard = false;
     secondCard = this;
+    cardCounter++;
+    currentScore.textContent = cardCounter;
    
     checkForMatch();
   
@@ -38,6 +51,12 @@ function checkForMatch() {
 function disableCards() {
   firtsCard.removeEventListener("click", flipCard)
   secondCard.removeEventListener("click", flipCard)
+  gameOver++;
+  if(gameOver === 6) {
+    setTimeout(function() {
+      endGame();
+    }, 500)
+  }
   resetBoard()
 }
 
@@ -47,7 +66,7 @@ function unflippedCards() {
     firtsCard.classList.remove('flip')
     secondCard.classList.remove('flip')
 
-    lockBoard = false;
+    resetBoard();
   }, 1000)
 }
 
@@ -56,6 +75,12 @@ function resetBoard() {
   [firtsCard, secondCard] = [null, null]
 }
 
+function endGame() {
+  if (lowScore > currentScore.innerText || !lowScore) {
+      localStorage.setItem("low-score", currentScore.innerText);
+      bestScore.innerText = currentScore.innerText;
+  }
+}
 
 (function shuffleCards(){
   cards.forEach(card => {
@@ -63,9 +88,5 @@ function resetBoard() {
     card.style.order = randomNum;
   })
 }) ();
-
-functin reStart() {
-
-};
 
 cards.forEach(card => card.addEventListener('click', flipCard));
